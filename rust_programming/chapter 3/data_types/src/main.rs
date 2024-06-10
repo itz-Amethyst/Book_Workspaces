@@ -1,6 +1,14 @@
+fn five() -> i32{
+    return 5;
+}
+
 fn main() {
     const MAX_POINTS: u32 = 100_000;
 
+
+    let x = five();
+
+    println!("{}", x);
     // Wrong XXX
     // let mut spaces = "   ";
     // spaces = spaces.len();
@@ -41,4 +49,46 @@ fn main() {
     
 
     // let first = a[0];
+
+
+    let number = 0;
+
+    if number != 0 {
+        println!("Number was something other than 0")
+    }
+    else if number >= 100 {
+        println!("Number is bigger than 100");
+    }
+    else{
+        println!("something");
+    }
+
+    let condition: bool = true;
+    // this will throw an error both estatements must be same type like 5 and 6
+    let number = if condition {
+        5
+    }
+    else{
+        // wrong
+        // "6"
+        // true
+        6
+    };
+
+
+    let mut limit = 3;
+
+    while limit != 0 {
+        limit = limit -1;
+        println!("{}", limit);
+    }
+
+    for month in a.iter() {
+        println!("{}", month);
+    }
+
+    // rev == reverse
+    for number in (1..4).rev(){
+        println!("{}", number);
+    }
 }
