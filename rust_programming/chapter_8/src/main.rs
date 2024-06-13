@@ -1,6 +1,8 @@
 use std::{collections::HashMap, hash::Hash};
 
-mod exercices;
+use exercises::first::mode;
+
+mod exercises;
 fn main() {
     let mut v : Vec<i32> = vec![2, 4, 6];
 
@@ -54,6 +56,7 @@ fn main() {
     let mut scores = HashMap::new();
 
     scores.insert(&blue, 20);
+    scores.insert(&red, 50);
 
     let blue_score = scores.get(&blue);
 
@@ -97,10 +100,17 @@ fn main() {
 
     println!("{:?}", without_numbers);
 
-    exercices::first::mean();
+    exercises::first::mean();
 
     let mut numbers_to_median = vec![5, 6, 23 ,2 ,5 ,2 ,1];
-    let median_value = exercices::first::median(&mut numbers_to_median);
+    let median_value = exercises::first::median(&mut numbers_to_median);
 
     println!("median is :{}", median_value);
+
+    let number_to_mode = vec![2, 5, 6 ,32 , 32 ,2 ,1 ,5 ,6 ,6, 6, 6];
+
+    if let Some(mode_value ) = mode(number_to_mode) {
+        println!("Mode is : {}", mode_value);
+    }
+
 }
