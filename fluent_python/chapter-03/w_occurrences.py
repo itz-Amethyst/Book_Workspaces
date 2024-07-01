@@ -1,3 +1,4 @@
+from collections import defaultdict
 import re
 import sys
 import os
@@ -9,7 +10,7 @@ WORD_RE = re.compile(f"\w+")
 
 # Check occurrences in file if provided path
 def build_index_for_file(input_file):
-    index = {}
+    index = defaultdict(list)
     with open(input_file, encoding="utf-8") as file:
         for line_no , line in enumerate(file, 1):
             for match in WORD_RE.finditer(line):
@@ -21,7 +22,7 @@ def build_index_for_file(input_file):
 
 # Check occurrences in provided 2 example lists 
 def build_index_for_list(word_list):
-    index = {}
+    index = defaultdict(list)
     for line_no, word in enumerate(word_list, 1):
         for match in WORD_RE.finditer(word):
             if match:
