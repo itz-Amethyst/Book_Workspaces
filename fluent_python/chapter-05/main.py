@@ -1,7 +1,7 @@
 from typing import NamedTuple, Optional
 from dataclasses import dataclass, field
 from enum import Enum, auto
-from datetime import date
+from datetime import date as datetime_type
 # class Coordinate(NamedTuple):
 # this will make the instances immutable
 @dataclass(frozen=True)
@@ -32,7 +32,7 @@ class Resource:
     identifire: str
     title: str = '<untitled>'
     creators: list[str] = field(default_factory=list)
-    date: Optional[date] = None
+    date: Optional[datetime_type] = None
     type: ResourceType = ResourceType.BOOK
     description: str = ''
     language: str = ''
@@ -41,7 +41,7 @@ class Resource:
 r = Resource('0')
 description = 'Improving the design of existing code'
 book = Resource('978-0-13-475759-9', 'Refactoring, 2nd Edition',
-                ['Martin Fowler', 'Kent Beck'], date(2018, 11, 19),
+                ['Martin Fowler', 'Kent Beck'], datetime_type(2018, 11, 19),
                 ResourceType.BOOK, description,
                 'EN', ['computer programming', 'OOP'])
 print(book)
