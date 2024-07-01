@@ -76,17 +76,33 @@ def format_size(size_bytes: int) -> str:
         return f"{size_bytes / (1024 * 1024 * 1024):.2f} GB"
 
 
+def buble_sort_the_directories(directoeis: list[tuple[str, int]]) -> list[tuple[str, int]]:
+    """
+    Sorts directories based on their sizes using bubble sort.
+    """
+    n = len(directoeis)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if directoeis[j][1] < directoeis[j+1][1]:
+                directoeis[j], directoeis[j+1] = directoeis[j+1], directoeis[j]
+    return directoeis
+
 while True:
     
     path = input("Enter your path: ")
     try:
 
-        # print(get_sub_directories(path))
+        subdirs = get_sub_directories(path)
+        if not subdirs:
+           print("No valid subdirectory found.") 
+           continue
         res = {
-            subdir:format_size(calculate_path_size(subdir)) for subdir in get_sub_directories(path)
+            subdir:calculate_path_size(subdir) for subdir in subdirs
         }
-        if res:
-            for key, value in res.items():
-                print("{} -> {}".format(key, value))
+        size_list = [(subdir, size) for subdir, size in res.items()]
+        sorted_size_list = buble_sort_the_directories(size_list) 
+        
+        for key, value in sorted_size_list:
+            print(f"{key} -> {format_size(value)}")
     except Exception:
         print("Invalid path try again")
