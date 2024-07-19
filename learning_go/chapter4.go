@@ -41,9 +41,9 @@ func main(){
 	}
 
 
-	smaples := []string {"hello", "world"}
+	samples := []string {"hello", "world"}
 
-	for _,v := range smaples {
+	for _,v := range smaples{
 		for i,v := range v {
 			fmt.Println(i, string(v))
 		}
@@ -55,7 +55,7 @@ func main(){
 	fmt.Println(vals)
 
 	out_scope:	
-		for _, sample := range smaples {
+		for _, sample := range samples{
 			for i, v := range sample {
 				fmt.Println(i, string(v))
 				if v == 'w' {
@@ -63,5 +63,50 @@ func main(){
 				}
 			}
 			fmt.Println()
+		}
+
+	for i:=0; i < 10; i++ {
+		switch i {
+		case 0, 2 ,4:
+			fmt.Println(i, "it's even")
+		case 1, 3 ,5 :
+			fmt.Println(i, "it's odd")
+		default:
+			fmt.Println(i, "No Idea!")
+			break
+		}
+	}
+
+	for i := 1; i <=100; i++{
+		switch {
+		case i % 3 == 0 && i % 5 == 0:
+			fmt.Println("FizzBuzz")
+		case i % 3 == 0:
+			fmt.Println("Fizz")
+		case i % 5 == 0:
+			fmt.Println("Buzz")
+		default:
+			continue
+		}
+	}
+
+	something(20, 50)
+}
+
+func something(a, b int) {
+	for i := 0; i < a; i++ {
+		fmt.Println("SOMETING")
+
+		switch i {
+		case 5:
+			goto another_mode
+		}
+	}
+
+
+	another_mode:
+		for y := 0; i < b; i++ {
+
+			fmt.Println("something in b")
 		}
 }
